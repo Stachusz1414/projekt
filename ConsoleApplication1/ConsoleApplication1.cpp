@@ -16,7 +16,7 @@ const int MAX_VERTICAL_DISTANCE = 200;
 const int GROUND_PLATFORM_GAP = 100;
 const int MIN_VERTICAL_DISTANCE = 50;
 const int PLATFORM_REMOVAL_THRESHOLD = 5000;
-const float SPAWN_INTERVAL = 15.0f; // 15 seconds
+const float SPAWN_INTERVAL = 15.0f; 
 
 class Character {
 public:
@@ -34,17 +34,17 @@ public:
     Player(float radius) {
         this->radius = radius;
         if (!texture.loadFromFile("grafika.png")) {
-            // Handle error
+            
         }
 
         sprite.setTexture(texture);
 
-        // Ustaw skalę, aby sprite miał średnicę 2 * radius
+        
         float xScale = (2 * radius) / texture.getSize().x;
         float yScale = (2 * radius) / texture.getSize().y;
         sprite.setScale(xScale, yScale);
 
-        // Ustaw pozycję środka
+        
         sprite.setOrigin(texture.getSize().x / 2.0f, texture.getSize().y / 2.0f);
         sprite.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
@@ -60,7 +60,7 @@ public:
         velocity.y += GRAVITY;
         shape.move(velocity);
 
-        // Zaktualizuj pozycję sprite na podstawie koła
+        
         sprite.setPosition(shape.getPosition());
 
         // Kolizja z ziemią
@@ -268,7 +268,7 @@ int main() {
                 sf::Vector2f direction = player.shape.getPosition() - Adas.shape.getPosition();
                 float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
-                // Check for collision (distance = 0)
+                
                 if (distance <= 10) {
                     gameOver = true;
                     showDeathScreen = true;
@@ -288,17 +288,17 @@ int main() {
                 Adas.sprite.setPosition(Adas.shape.getPosition());
             }
 
-            // Znajdź najwyższą platformę w widoku
+            
             float highestY = findHighestPlatformY(platforms);
 
-            // Usuń platformy, które są poniżej highestY + PLATFORM_REMOVAL_THRESHOLD
+            // Usuń platformy, które są poniżej highestY 
             platforms.erase(std::remove_if(platforms.begin(), platforms.end(),
                 [highestY](const sf::RectangleShape& p) {
                     return p.getPosition().y > highestY + PLATFORM_REMOVAL_THRESHOLD;
                 }),
                 platforms.end());
 
-            // Podnieś ziemię do poziomu najniższej platformy + odstęp
+            // Podnieś ziemię do poziomu najniższej platformy 
             float currentLowestPlatformY = findLowestPlatformY(platforms);
             float desiredGroundY = currentLowestPlatformY + PLATFORM_HEIGHT + GROUND_PLATFORM_GAP;
             if (desiredGroundY < ground.getPosition().y) {
