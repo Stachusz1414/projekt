@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <list>
-#include "Header.h"
+#include "v3.h"
 
 
 int countVisiblePlatforms(const std::vector<sf::RectangleShape>& platforms, const sf::View& view) {
