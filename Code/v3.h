@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Header_h
-#define Header_h
+#ifndef v3_h
+#define v3_h
 
 #include <SFML/Graphics.hpp>
 
